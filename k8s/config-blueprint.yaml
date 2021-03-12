@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: env-config-blueprint
-  namespace: blueprint
-data:  # Example vars that will get picked up by Flask application
-  FLASK_ENV: development
-  FLASK_DEBUG: "1"
