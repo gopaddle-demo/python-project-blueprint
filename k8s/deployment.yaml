@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: blueprint
+  name: blueprint
+  namespace: blueprint
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: blueprint
+    spec:
+      containers:
+          name: blueprint
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: env-config-blueprint
+            - secretRef:
+                name: env-secrets-blueprint
+
+  selector:
+    matchLabels:
+      app: blueprint
